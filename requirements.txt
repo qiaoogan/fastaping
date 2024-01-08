@@ -2,5 +2,6 @@ click==8.1.7
 h11==0.14.0
 uvicorn==0.25.0
 fastapi[all]
+pymongo==4.6.1
 
 
