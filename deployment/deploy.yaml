@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ezl-backendpy-depl
+  labels:
+    app: ezl-backendpy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ezl-backendpy
+  template:
+    metadata:
+      labels:
+        app: ezl-backendpy
+    spec:
+      containers:
+      - name: ezl-backendpy
+        image: qiaoogan/ezl-backendpy:0.0.1
+        ports:
+        - containerPort: 8000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ezl-backendpy-svc
+spec:
+  type: NodePort
+  selector:
+    app: ezl-backendpy
+  ports:
+  - protocol: TCP
+    port: 8101
+    targetPort: 8000
+    nodePort: 31101
