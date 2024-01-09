@@ -11,6 +11,7 @@ async def get_query_token(token: str):
     
 async def connect_db():
     myclient = MongoClient("mongodb://mongodb-svc:27017")
+    # myclient = MongoClient("mongodb://localhost:29009")
     mydb = myclient["mydatabase"]
     return mydb["items"]
 
