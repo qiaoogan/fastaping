@@ -10,7 +10,7 @@ async def get_query_token(token: str):
         raise HTTPException(status_code=400, detail="No Jessica token provided")
     
 async def connect_db():
-    myclient = MongoClient("mongodb://localhost:29009")
+    myclient = MongoClient("mongodb://mongodb-svc:27017")
     mydb = myclient["mydatabase"]
     return mydb["items"]
 
