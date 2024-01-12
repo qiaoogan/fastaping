@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Depends
 from dependencies import get_query_token, get_toker_header
 from routers import items, users
@@ -11,6 +12,9 @@ app.mount("/internal", StaticFiles(directory="internal"), name="admin.py")
 app.include_router(users.router)
 app.include_router(items.router)
 
-@app.get("/")
-async def root():
-    return {"message": "Hello Bigger Application!"}
+@app.get("/health")
+async def health():
+    return {
+        "alive": True,
+        "version": os.environ.get("FASTAPING_VERSION")
+    }

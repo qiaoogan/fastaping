@@ -17,7 +17,6 @@ class Item(BaseModel):
     price: float
     tax: float | None = None
 
-fake_items_db = {"plumbus": {"name": "Plumbus"}, "gun": {"name": "Portal Gun"}}
 @router.get("/")
 async def read_items(mycol = Depends(get_db)):
     result = mycol.find({}, {"_id": 0});
