@@ -23,7 +23,7 @@ spec:
         - name: FASTAPING_ENV
           value: prod
         - name: FASTAPING_VERSON
-        value: "$(FASTAPING_VERSON)"
+          value: "$(FASTAPING_VERSON)"
 
 ---
 apiVersion: v1
