@@ -22,8 +22,11 @@ spec:
         env:
         - name: FASTAPING_ENV
           value: prod
-        - name: FASTAPING_VERSON
-          value: "$(FASTAPING_VERSON)"
+        - name: FASTAPING_VERSION  
+          valueFrom:
+            configMapKeyRef:
+              name: fastaping-config
+              key: FASTAPING_VERSION
 
 ---
 apiVersion: v1
