@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ezl-backendpy
-        image: backendpy:${FASTAPING_VERSION}
+        image: backendpy:0.0.1
         ports:
         - containerPort: 8000
         env:
