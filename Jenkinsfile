@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build for placeholder'
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'git@github.com:qiaoogan/fastaping.git']])
+                // checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'git@github.com:qiaoogan/fastaping.git']])
                 sh "pwd & ls"
                 sh "echo $USER & docker -v & kubectl version"
             }
