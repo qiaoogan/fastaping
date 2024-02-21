@@ -4,6 +4,7 @@ from dependencies import get_query_token, get_toker_header, get_db
 from pydantic import BaseModel
 from pymongo import MongoClient
 
+
 router = APIRouter(
     prefix="/items",
     tags=["itmes"],
@@ -17,8 +18,10 @@ class Item(BaseModel):
     price: float
     tax: float | None = None
 
+#get_db_with_collection = partial(get_db, collection_name="items")  
+
 @router.get("/")
-async def read_items(mycol = Depends(get_db)):
+async def read_items(mycol=Depends(get_db(collection_name="items"))):
     result = mycol.find({}, {"_id": 0});
     #这里不能直接返回查询结果，是因为find()查出来的是一个游标，而不是一个具本dict属性的(文档)对象，但是find_one()查出来的不是游标而且一个文档对象
     items = [Item(name=item["name"], description=item["description"],price=item["price"],tax=item["tax"]) for item in result]
@@ -28,7 +31,7 @@ async def read_items(mycol = Depends(get_db)):
         return "no data"
 
 @router.get("/{item_id}")
-async def read_item(item_id: str, mycol = Depends(get_db)):
+async def read_item(item_id: str, mycol=Depends(get_db(collection_name="items"))):
     myquery = {"name": item_id}
     x = mycol.find_one(myquery, {"_id": 0})
     if x is not None:
@@ -37,21 +40,21 @@ async def read_item(item_id: str, mycol = Depends(get_db)):
         return "no such items"
    
 @router.put( "/{item_id}")
-async def update_item(item_id: str, item: Item, mycol = Depends(get_db)):
+async def update_item(item_id: str, item: Item, mycol=Depends(get_db(collection_name="items"))):
     myquery = {"name":item_id}
     result = mycol.update_one(myquery, {"$set":item.dict()})
     if result.matched_count > 0:
         return item
-    else:
+    else: 
         return "no such items"
 
 @router.post("/addUser", status_code=201, response_model=Item)
-async def add_user(item : Item, mycol = Depends(get_db)) -> Any:
+async def add_user(item : Item, mycol=Depends(get_db(collection_name="items"))) -> Any:
     mycol.insert_one(item.dict())
     return item
 
 @router.delete("/{item_id}")
-async def delete_user(item_id: str, mycol = Depends(get_db)):
+async def delete_user(item_id: str, mycol=Depends(get_db(collection_name="items"))):
     myquery = {"name": item_id}
     result = mycol.delete_one(myquery)
     if result.deleted_count > 0:
