@@ -26,6 +26,10 @@ async def connect_db(collection_name: str):
 # async def get_db(mycol = Depends(connect_db)):
 #     return mycol
 
+# def get_db(collection_name: str):
+#     async def _get_db():
+#         return await connect_db(collection_name)
+#     return Depends(_get_db)
 
 def get_db(collection_name: str):
     async def _get_db():
