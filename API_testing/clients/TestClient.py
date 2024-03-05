@@ -1,6 +1,5 @@
 import os
-from ..utils.request_utils import post, put, get, delete
-
+from utils.request_utils import post, put, get, delete
 
 HOST = os.environ.get("TEST_HOST") if os.environ.get("TEST_ENV") == "container" else "http://localhost:8901"
 

@@ -41,9 +41,13 @@ pipeline {
         stage('API Tests') {
             steps {
                 echo 'API tests for placeholder'
-                sh "pwd && ls"
+                sh "pwd && ls -al"
                 dir("API_testing") {
-                    sh "pwd && ls"
+                    timeout(time: 2, unit: 'MINUTES') {
+                        sh 'python health_check.py'
+                    }
+
+                    sh "pwd && ls -al"
                     sh "bash test-in-container-cloud.sh"
                 }
             }

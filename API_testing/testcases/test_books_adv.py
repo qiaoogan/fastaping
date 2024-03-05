@@ -1,4 +1,4 @@
-from ..clients.TestClient import *
+from clients.TestClient import *
 import pytest
 
 book = {
@@ -8,7 +8,6 @@ book = {
     "price": 100.0,
     "stock": 200
 }
-
 
 updated_book = {
     "name": "pytest_updated",
