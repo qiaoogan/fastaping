@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "tests ran in container"
 pwd && ls
