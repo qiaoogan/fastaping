@@ -43,7 +43,7 @@ pipeline {
                 echo 'API tests for placeholder'
                 sh "pwd && ls"
                 sh "cd API_testing && pwd && ls"
-                sh "./test-in-container-cloud.sh"
+                sh "bash ./test-in-container-cloud.sh"
             }
         }
         stage('Deploy UAT') {
