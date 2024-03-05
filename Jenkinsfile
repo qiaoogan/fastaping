@@ -44,7 +44,7 @@ pipeline {
                 sh "pwd && ls -al"
                 dir("API_testing") {
                     timeout(time: 2, unit: 'MINUTES') {
-                        sh 'python health_check.py'
+                        sh "bash health-check.sh"
                     }
 
                     sh "pwd && ls -al"
