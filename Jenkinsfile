@@ -41,7 +41,9 @@ pipeline {
         stage('API Tests') {
             steps {
                 echo 'API tests for placeholder'
-                pip install -r requirements.txt
+                pwd && ls
+                cd API_testing
+                sh "test-in-container-cloud.sh"
             }
         }
         stage('Deploy UAT') {
