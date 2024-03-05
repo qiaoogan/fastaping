@@ -42,7 +42,7 @@ pipeline {
             steps {
                 echo 'API tests for placeholder'
                 sh "pwd && ls"
-                sh "cd API_testing"
+                sh "cd API_testing && pwd && ls"
                 sh "test-in-container-cloud.sh"
             }
         }
