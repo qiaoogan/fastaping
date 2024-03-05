@@ -44,7 +44,7 @@ pipeline {
                 sh "pwd && ls -al"
                 dir("API_testing") {
                     timeout(time: 2, unit: 'MINUTES') {
-                        sh "bash health-check.sh"
+                        sh "bash health-check-cloud.sh"
                     }
 
                     sh "pwd && ls -al"
