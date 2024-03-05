@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 
 docker container run \
   --rm \
@@ -6,4 +6,4 @@ docker container run \
   -e TEST_ENV="container" \
   -e TEST_HOST="http://123.60.93.173/fastapi" \
   qiaoogan/papitestenv:0.0.2 \
-  bash /home/mount/tests-entry.sh
+  sh /home/mount/tests-entry.sh
