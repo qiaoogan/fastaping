@@ -41,8 +41,8 @@ pipeline {
         stage('API Tests') {
             steps {
                 echo 'API tests for placeholder'
-                pwd && ls
-                cd API_testing
+                sh "pwd && ls"
+                sh "cd API_testing"
                 sh "test-in-container-cloud.sh"
             }
         }
