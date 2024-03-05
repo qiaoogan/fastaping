@@ -41,6 +41,7 @@ pipeline {
         stage('API Tests') {
             steps {
                 echo 'API tests for placeholder'
+                pip install -r requirements.txt
             }
         }
         stage('Deploy UAT') {
