@@ -58,4 +58,10 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'API_testing/allure-report/**/*', allowEmptyArchive: true, fingerprint: true
+        }
+    }
 }
