@@ -1,1 +1,0 @@
-docker build --no-cache --rm  --tag=papitestenv:0.0.1 .
