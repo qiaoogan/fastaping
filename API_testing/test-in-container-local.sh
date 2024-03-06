@@ -5,5 +5,5 @@ docker container run \
   --mount type=bind,source="$(pwd)",target=/home/mount \
   -e TEST_ENV="container" \
   -e TEST_HOST="http://host.docker.internal:8901" \
-  qiaoogan/papitestenv:0.0.4 \
+  qiaoogan/papitestenv:0.0.5 \
   bash /home/mount/tests-entry.sh
