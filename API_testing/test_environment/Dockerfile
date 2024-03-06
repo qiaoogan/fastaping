@@ -9,4 +9,6 @@ COPY ./allure.zip .
 RUN unzip allure.zip -d allure
 ENV PATH="${PATH}:/home/testenv/allure/bin"
 
+WORKDIR /home/mount
+
 CMD ["tail", "-f", "/dev/null"]
