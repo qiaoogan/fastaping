@@ -1,2 +1,5 @@
+.idea/
 __pycache__/
 /API_testing/test_environment/allure.zip
+/API_testing/report/
+/API_testing/allure-results/

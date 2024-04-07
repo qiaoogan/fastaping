@@ -16,6 +16,8 @@ async def connect_db(collection_name: str):
         myclient = MongoClient("mongodb://mongodb-svc:27017")
     elif os.environ.get("FASTAPING_ENV") == "dev":
         myclient = MongoClient("mongodb://localhost:29009")
+    elif os.environ.get("FASTAPING_ENV") == "docker":
+        myclient = MongoClient(os.environ.get("FASTAPING_MONGO_DB_URL"))
     else:
         myclient = MongoClient("mongodb://localhost:29009")
 

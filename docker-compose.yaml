@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+
+  fastapi-mongodb:
+    image: mongo:6.0
+    container_name: faping-mongodb
+    networks:
+      - fastapi-network
+
+  bookapi:
+    image: backendpy:0.0.2
+    container_name: faping-bookapipy
+    depends_on:
+      - fastapi-mongodb
+    ports:
+      - "8901:8000"
+    environment:
+      - FASTAPING_ENV=docker
+      - FASTAPING_MONGO_DB_URL=mongodb://fastapi-mongodb:27017
+    networks:
+      - fastapi-network
+
+networks:
+  fastapi-network:
